@@ -1,0 +1,15 @@
+{
+  "mongo": {
+    "url": "mongodb://user:password@address:port",
+    "db": "database",
+    "testDb": "database-test"
+  },
+  "amqp": {
+    "url": "amqp://user:password@address:port",
+    "myQueue": "myQueue",
+    "gatewayQueue": "gatewayQueue",
+    "myService": "me",
+    "gatewayService": "gateway"
+  },
+  "repository": "mongo"
+}
