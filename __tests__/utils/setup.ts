@@ -4,13 +4,13 @@ import State from '../../src/tools/state.js'
 import Mongo from '../../src/connections/mongo/factory.js'
 
 beforeAll(async () => {
+  if(State.mongo || State.broker) return
+
   const mongo = await Mongo.create()
   const broker = new FakeBroker()
 
   State.mongo = mongo
   State.broker = broker
-
-  await State.mongo.init()
 });
 
 afterAll(async () => {

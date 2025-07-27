@@ -37,4 +37,3 @@ export default class Validation extends RawValidation {
     return this;
   }
 }
-

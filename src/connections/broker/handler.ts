@@ -4,10 +4,14 @@ import * as errors from '../../errors/index.js';
 import type * as types from '../../types/index.js';
 
 export default class Handler {
-  private readonly sampleServices: services.SampleServices;
+  private readonly _sampleServices: services.SampleServices;
 
   constructor() {
-    this.sampleServices = new services.SampleServices();
+    this._sampleServices = new services.SampleServices();
+  }
+
+  private get sampleServices(): services.SampleServices {
+    return this._sampleServices;
   }
 
   async sampleMessage(message: types.IRabbitMessage): Promise<void> {
