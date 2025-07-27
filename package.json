@@ -33,7 +33,7 @@
     "@eslint/compat": "^1.2.2",
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.9.0",
-    "@jest/globals": "30.0.4",
+    "@jest/globals": "30.0.5",
     "@types/amqplib": "0.10.7",
     "@types/bcrypt": "5.0.2",
     "@types/node": "24.0.13",
