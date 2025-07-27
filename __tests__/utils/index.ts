@@ -1,4 +1,5 @@
-import fakeData from './fakeData.json' with { type: "json" };
+import mongoose from 'mongoose';
+import fakeData from './fakeData.json';
 
 const generateRandomName = (): string => {
   const vocabulary = 'ABCDEFGHIJKLMNOUPRSTUWZabcdefghijklmnouprstuwz';
@@ -9,4 +10,8 @@ const generateRandomName = (): string => {
   return name;
 };
 
-export { fakeData, generateRandomName };
+const cleanDb = async (): Promise<void> => {
+  await mongoose.connection.dropDatabase();
+}
+
+export { fakeData, generateRandomName, cleanDb };
