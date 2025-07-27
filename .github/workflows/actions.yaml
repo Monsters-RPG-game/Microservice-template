@@ -60,6 +60,21 @@ jobs:
     container:
       image: node:22
 
+    services:
+      mongodb:
+        image: mongo:8
+        env:
+          MONGO_INITDB_ROOT_USERNAME: user
+          MONGO_INITDB_ROOT_PASSWORD: password
+          MONGO_INITDB_DATABASE: users-test
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd "mongosh --eval 'db.adminCommand(\"ping\")' --username user --password password --authenticationDatabase admin"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -82,7 +97,10 @@ jobs:
           path: config/
 
       - name: Run tests
-        run: apt-get update && apt-get install gdebi-core -y && wget http://ftp.us.debian.org/debian/pool/main/o/openssl/libssl1.1_1.1.1w-0+deb11u1_amd64.deb && gdebi --non-interactive libssl1.1_1.1.1w-0+deb11u1_amd64.deb && MONGOMS_DISTRO=ubuntu-22.04 yarn test:e2e && MONGOMS_DISTRO=ubuntu-22.04 yarn test:unit && MONGOMS_DISTRO=ubuntu-22.04 yarn test:db
+        run: |
+          npm run test:e2e
+          npm run test:unit
+          npm run test:db
 
   lint:
     needs: [setup-config]
