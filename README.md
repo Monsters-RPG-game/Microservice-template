@@ -17,7 +17,6 @@ TLDR:
 ## 0. Key packages
 
 - RabbitMQ - communication between microservices
-- Chalk - coloring logs
 - Mongoose - database
 
 ## 1. How to start
